@@ -1,0 +1,33 @@
+{{model | json}}
+<div class="container">
+  <h1>Sign In</h1>
+  <form (ngSubmit)="signIn()" #loginForm="ngForm">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username"
+             required
+             username
+             [(ngModel)]="model.username"
+             #username="ngModel"
+             name="username">
+
+      <div [hidden]="username.valid || username.pristine" class="alert alert-dark">
+        Please provide a correct username
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password"
+             required
+             [(ngModel)]="model.password"
+             #password="ngModel"
+             name="password"
+             minlength="4">
+
+      <div [hidden]="password.valid || password.pristine" class="alert alert-dark">
+        Password must have at least 4 characters
+      </div>
+    </div>
+    <button type="submit" class="btn btn-dark" [disabled]="loginForm.form.invalid">Sign In</button>
+  </form>
+</div>
