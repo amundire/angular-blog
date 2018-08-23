@@ -5,13 +5,15 @@ import { ArticleCreateComponent } from './article-create/article-create.componen
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { ArticleMyComponent } from './article-my/article-my.component';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
+import { ArticleSearchComponent } from './article-search/article-search.component';
 
 const articleRoutes: Routes = [
   {path: 'all', component: ArticleAllComponent },
   {path: 'create', component: ArticleCreateComponent},
   {path: 'my', component: ArticleMyComponent},
   {path: 'details/:id', component: ArticleDetailsComponent},
-  {path: 'edit/:id', component: ArticleEditComponent}
+  {path: 'edit/:id', component: ArticleEditComponent},
+  {path: 'search', component: ArticleSearchComponent}
 ];
 
 @NgModule({

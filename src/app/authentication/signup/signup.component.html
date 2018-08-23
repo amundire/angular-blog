@@ -1,4 +1,3 @@
-{{model | json}}
 <div class="container">
   <h1>Sign Up</h1>
   <form (ngSubmit)="signUp()" #registerForm="ngForm">
@@ -42,6 +41,9 @@
         Password must have at least 4 characters
       </div>
     </div>
+    <a routerLink="signin">Already have an account?</a>
+    <div>
     <button type="submit" class="btn btn-dark" [disabled]="registerForm.form.invalid">Sign Up</button>
+    </div>
   </form>
 </div>

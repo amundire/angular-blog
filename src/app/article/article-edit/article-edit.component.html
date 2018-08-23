@@ -1,3 +1,39 @@
-<p>
-  article-edit works!
-</p>
+<div class='container'>
+  <div class='row space-top'>
+    <div class='col-md-12'>
+      <h1>Edit Article</h1>
+    </div>
+  </div>
+  <form #furnitureForm="ngForm" (ngSubmit)="edit()">
+    <div class='row space-top'>
+      <div class='col-md-4'>
+        <div class='form-group'>
+          <label class='form-control-label' for='new-title'>Title</label>
+          <input class='form-control' id='new-title' type='text'
+                 required
+                 minlength="4"
+                 name="title"
+                 [(ngModel)]="bindingModel.title"
+                 #title="ngModel">
+        </div>
+        <div class='form-group has-success'>
+          <label class='form-control-label' for='new-model'>Content</label>
+          <textarea class='form-control is-valid' id='new-model'
+                    required
+                    type='text'
+                    minlength="4"
+                    name="content"
+                    [(ngModel)]="bindingModel.content"
+                    #content="ngModel"></textarea>
+        </div>
+        <div class='form-control-feedback' [hidden]="content.valid || content.pristine">This input value is
+          valid
+        </div>
+        <div class='col-md-4'>
+          <input type='submit' class='btn btn-primary' value='Edit'/>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+

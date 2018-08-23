@@ -1,12 +1,12 @@
 <div class='container'>
   <div class='row space-top'>
     <div class='col-md-12'>
-      <h1>These are your articles, {{authService.user}}</h1>
+      <h1>Search results for: "{{searchParams}}"</h1>
     </div>
   </div>
   <div *ngFor="let a of articles | async" class='row space-top'>
     <div class='col-md-4'>
-      <div *ngIf="a.author == authService.user" Class='card text-white bg-primary'>
+      <div *ngIf="a.title.includes(searchParams)" Class='card text-white bg-primary'>
         <div class='card-body'>
           <blockquote class='card-blockquote'>
             <p>Title: {{a.title}}</p>

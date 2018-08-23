@@ -1,3 +1,24 @@
-<p>
-  article-all works!
-</p>
+<div class='container'>
+  <div class='row space-top'>
+    <div class='col-md-12'>
+      <h1>Welcome to my Angular Blog</h1>
+    </div>
+  </div>
+  <div class='row space-top'>
+    <div *ngFor="let a of articles | async" class='col-md-4'>
+      <div class='card text-white bg-primary'>
+        <div class='card-body'>
+          <blockquote class='card-blockquote'>
+            <p>Title: {{a.title}}</p>
+            <p>Author: {{a.author}}</p>
+            <div class='pull-right'>
+              <a routerLink="../details/{{a._id}}" class='btn btn-info'>Details</a>
+              <a (click)="deleteArticle(a._id)" *ngIf="authService.isAdmin()" class='btn btn-danger'>Delete</a>
+              <a routerLink="../edit/{{a._id}}" *ngIf="authService.isAdmin() || a.author == authService.user" class='btn btn-success'>Edit</a>
+            </div>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

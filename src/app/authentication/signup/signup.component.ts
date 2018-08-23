@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SignUpModel } from '../models/signup.model';
 import { AuthService } from '../auth.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-signup',
@@ -10,7 +11,8 @@ import { AuthService } from '../auth.service';
 export class SignupComponent implements OnInit {
   model: SignUpModel;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private router: Router) {
     this.model = new SignUpModel('', '', '');
   }
 

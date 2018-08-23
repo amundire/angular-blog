@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from '../authentication/auth.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {AuthService} from '../authentication/auth.service';
 
 @Component({
   selector: 'app-navigation',
@@ -18,5 +18,9 @@ export class NavigationComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.router.navigate(['/signin']);
+  }
+
+  search(query) {
+    this.router.navigate([`article/search`], {queryParams: {search: query.search}});
   }
 }

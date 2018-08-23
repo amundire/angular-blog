@@ -1,3 +1,12 @@
-<p>
-  article-details works!
-</p>
+<div class="articleContent">
+  <div *ngIf="model | async as a" class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <h1 class="mt-4">{{a.title}}</h1>
+        <p>Posted {{articleService.createdBeforeDays(a._kmd.ect)}}<br> by {{a.author}}</p>
+        <p class="lead">{{a.content}}</p>
+        <div class="btn btn-danger" *ngIf="authService.isAdmin()" (click)="banUser(a.author)">Ban User</div>
+      </div>
+    </div>
+  </div>
+</div>
