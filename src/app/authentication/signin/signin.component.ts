@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SignInModel } from '../models/signin.model';
 import { AuthService } from '../auth.service';
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-signin',
@@ -10,11 +11,13 @@ import { AuthService } from '../auth.service';
 export class SigninComponent implements OnInit {
   model: SignInModel;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private titleService: Title) {
     this.model = new SignInModel('', '');
   }
 
   ngOnInit() {
+    this.titleService.setTitle( `Sign In` );
   }
 
   signIn() {

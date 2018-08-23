@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService } from '../article.service';
 import { ArticleModel } from '../models/article.model';
+import { AuthService } from '../../authentication/auth.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-article-edit',
@@ -12,15 +14,23 @@ export class ArticleEditComponent implements OnInit {
   bindingModel: ArticleModel;
 
   constructor(private route: ActivatedRoute,
-            private articleService: ArticleService,
-            private router: Router) { }
+              private articleService: ArticleService,
+              private router: Router,
+              private authService: AuthService,
+              private titleService: Title) {
+  }
 
   ngOnInit() {
-    this.articleService.getArticleById(
-      this.route.snapshot.params['id'], 'kinvey')
-      .subscribe(data => {
-      this.bindingModel = data;
-    });
+    this.titleService.setTitle(`Edit Article`);
+    if (!this.authService.user || JSON.parse(localStorage.getItem('currentUser')).username === 'anonymous') {
+      this.router.navigate(['signin']);
+    } else {
+      this.articleService.getArticleById(
+        this.route.snapshot.params['id'], 'kinvey')
+        .subscribe(data => {
+          this.bindingModel = data;
+        });
+    }
   }
 
   edit() {

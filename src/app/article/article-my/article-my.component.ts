@@ -4,6 +4,7 @@ import { ArticleModel } from '../models/article.model';
 import { Observable } from 'rxjs/index';
 import { AuthService } from '../../authentication/auth.service';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-article-my',
@@ -15,10 +16,12 @@ export class ArticleMyComponent implements OnInit {
 
   constructor(private articleService: ArticleService,
               public authService: AuthService,
-              private router: Router) { }
+              private router: Router,
+              private titleService: Title) { }
 
   ngOnInit(): void {
     this.articles = this.articleService.getAllArticles('kinvey');
+    this.titleService.setTitle( `My Articles` );
   }
 
   deleteArticle(id) {

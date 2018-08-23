@@ -4,6 +4,7 @@ import { ArticleService } from '../article.service';
 import { ArticleModel } from '../models/article.model';
 import { Observable } from 'rxjs/index';
 import { AuthService } from '../../authentication/auth.service';
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-article-search',
@@ -16,12 +17,15 @@ export class ArticleSearchComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private articleService: ArticleService,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private titleService: Title) { }
 
   ngOnInit() {
-    console.log(this.route.queryParams._value.search);
+    const searchArgs = this.route.queryParams['_value']['search'];
+    console.log(searchArgs);
     this.articles = this.articleService.getAllArticles('kinvey');
-    this.searchParams = this.route.queryParams._value.search;
+    this.searchParams = searchArgs;
+    this.titleService.setTitle( `Search for: ${searchArgs}` );
   }
 
   deleteArticle(id) {

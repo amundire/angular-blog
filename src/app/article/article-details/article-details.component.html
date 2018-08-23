@@ -1,11 +1,15 @@
 <div class="articleContent">
-  <div *ngIf="model | async as a" class="container">
+  <div *ngIf="model" class="container">
     <div class="row">
       <div class="col-lg-8">
-        <h1 class="mt-4">{{a.title}}</h1>
-        <p>Posted {{articleService.createdBeforeDays(a._kmd.ect)}}<br> by {{a.author}}</p>
-        <p class="lead">{{a.content}}</p>
-        <div class="btn btn-danger" *ngIf="authService.isAdmin()" (click)="banUser(a.author)">Ban User</div>
+        <h1 class="mt-4">{{model.title}}</h1>
+        <p>Posted {{articleService.createdBeforeDays(model._kmd.ect)}}<br> by {{model.author}}</p>
+        <div class='pull-right'>
+          <a (click)="deleteArticle(model._id)" *ngIf="authService.isAdmin()" class='btn btn-danger'>Delete</a>
+          <a routerLink="../edit/{{model._id}}" *ngIf="authService.isAdmin() || model.author == authService.user" class='btn btn-success'>Edit</a>
+        </div>
+        <p class="lead">{{model.content}}</p>
+        <div class="btn btn-danger" *ngIf="authService.isAdmin()" (click)="banUser(model.author)">Ban User</div>
       </div>
     </div>
   </div>
