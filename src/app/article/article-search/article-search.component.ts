@@ -22,7 +22,6 @@ export class ArticleSearchComponent implements OnInit {
 
   ngOnInit() {
     const searchArgs = this.route.queryParams['_value']['search'];
-    console.log(searchArgs);
     this.articles = this.articleService.getAllArticles('kinvey');
     this.searchParams = searchArgs;
     this.titleService.setTitle( `Search for: ${searchArgs}` );

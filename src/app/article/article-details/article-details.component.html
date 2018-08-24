@@ -4,12 +4,12 @@
       <div class="col-lg-8">
         <h1 class="mt-4">{{model.title}}</h1>
         <p>Posted {{articleService.createdBeforeDays(model._kmd.ect)}}<br> by {{model.author}}</p>
+        <div class="btn btn-danger" *ngIf="authService.isAdmin()" (click)="banUser(model.author)">Ban User</div>
         <div class='pull-right'>
           <a (click)="deleteArticle(model._id)" *ngIf="authService.isAdmin()" class='btn btn-danger'>Delete</a>
-          <a routerLink="../edit/{{model._id}}" *ngIf="authService.isAdmin() || model.author == authService.user" class='btn btn-success'>Edit</a>
+          <a routerLink="/edit/{{model._id}}" *ngIf="authService.isAdmin() || model.author == authService.user" class='btn btn-success'>Edit</a>
         </div>
         <p class="lead">{{model.content}}</p>
-        <div class="btn btn-danger" *ngIf="authService.isAdmin()" (click)="banUser(model.author)">Ban User</div>
       </div>
     </div>
   </div>

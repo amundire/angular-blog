@@ -11,9 +11,6 @@
           <blockquote class='card-blockquote'>
             <p>Title: {{a.title}}</p>
             <p>Author: {{a.author}}</p>
-            <p> </p>
-            <div class="btn btn-danger" *ngIf="authService.isAdmin()" (click)="banUser(a.author)">Ban User</div>
-            <p> </p>
             <div class='pull-right'>
               <a routerLink="../details/{{a._id}}" class='btn btn-info'>Details</a>
               <a (click)="deleteArticle(a._id)" *ngIf="authService.isAdmin()" class='btn btn-danger'>Delete</a>

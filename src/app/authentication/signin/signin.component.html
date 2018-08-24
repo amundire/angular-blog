@@ -26,6 +26,7 @@
       <div [hidden]="password.valid || password.pristine" class="alert alert-dark">
         Password must have at least 4 characters
       </div>
+      <a (click)="switchPage('signup')" href="javascript:void(0);">Don't have an account?</a>
     </div>
     <button type="submit" class="btn btn-dark" [disabled]="loginForm.form.invalid">Sign In</button>
   </form>

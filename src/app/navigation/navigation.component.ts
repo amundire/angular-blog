@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../authentication/auth.service';
+import {query} from "@angular/core/src/render3/query";
 
 @Component({
   selector: 'app-navigation',
@@ -24,3 +25,4 @@ export class NavigationComponent implements OnInit {
     this.router.navigate([`article/search`], {queryParams: {search: query.search}});
   }
 }
+

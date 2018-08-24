@@ -1,10 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Observable} from 'rxjs/index';
-import {ArticleModel} from '../models/article.model';
-import {ArticleService} from '../article.service';
-import {AuthService} from '../../authentication/auth.service';
-import {Title} from '@angular/platform-browser';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ArticleService } from '../article.service';
+import { AuthService } from '../../authentication/auth.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-article-details',

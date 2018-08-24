@@ -27,4 +27,8 @@ export class SignupComponent implements OnInit {
       .register(this.model, 'basic')
       .subscribe();
   }
+
+  switchPage(route) {
+    this.router.navigate([`${route}`]);
+  }
 }
